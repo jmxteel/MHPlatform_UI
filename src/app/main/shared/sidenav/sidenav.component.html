@@ -1,0 +1,92 @@
+<div class="wrapper">
+    <app-navbar></app-navbar>
+
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="index3.html" class="brand-link">
+          <img src="assets/dist/img/mh150x150.png" alt="Mobelhaus Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+          <span class="brand-text font-weight-heavy"><strong style="font-weight: 1000; text-align: middle">MH</strong>Platform v.1</span>
+        </a>
+    
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <!-- Sidebar user panel (optional) -->
+          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+              <img src="assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+              <a href="#" class="d-block">Juary Pierce</a>
+            </div>
+          </div>
+    
+          <!-- Sidebar Menu -->
+          <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+              <!-- Add icons to the links using the .nav-icon class
+                   with font-awesome or any other icon font library -->
+              <li class="nav-item">
+                <a routerLink="main" class="nav-link">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Dashboard
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="main" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                    Widgets
+                  </p>
+                </a>
+              </li>
+              <li class="nav-header">DEPARTMENTS</li>
+              <li class="nav-item">
+                <a routerLink="main" class="nav-link">
+                  <i class="nav-icon far fa-calendar-alt"></i>
+                  <p>
+                    Production
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="main" class="nav-link">
+                  <i class="nav-icon far fa-image"></i>
+                  <p>
+                    Installation
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="main" class="nav-link">
+                  <i class="nav-icon fas fa-columns"></i>
+                  <p>
+                    Dispatch
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+      </aside>
+
+      <div class="content-wrapper">
+        <router-outlet></router-outlet>
+      </div>
+       
+      <footer class="main-footer">
+        <strong>Copyright &copy; 2023-2024 <a href="https://mobelhaus.com.ph">MHPlatform</a>.</strong>
+        All rights reserved.
+        <div class="float-right d-none d-sm-inline-block">
+          <b>Version</b> 1.0.0
+        </div>
+      </footer>
+    
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+      </aside>
+</div>
