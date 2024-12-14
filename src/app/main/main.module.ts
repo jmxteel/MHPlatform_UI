@@ -9,6 +9,7 @@ import { MainContentComponent } from './main-content/main-content.component';
 import { InstallationContentComponent } from './installation-content/installation-content.component';
 import { AgGridModule } from "ag-grid-angular";
 import { LoaderModule } from "../shared/loader/loader.module";
+import { ProductionContentComponent } from './production-content/production-content.component';
 
 const routes: Routes = [
     {
@@ -20,7 +21,7 @@ const routes: Routes = [
         //   { path: 'reports', component: ReportsContentComponent },
         //   { path: 'access-rights', component: AccessRightsContentComponent },
           { path: 'installation', component: InstallationContentComponent },
-        //   { path: 'production', component: ProductionContentComponent },
+          { path: 'production', component: ProductionContentComponent },
         ]
       },  
       { path: '**', redirectTo: '' }
@@ -32,7 +33,8 @@ const routes: Routes = [
     NavbarComponent,
     SidenavComponent,
     MainContentComponent,
-    InstallationContentComponent
+    InstallationContentComponent,
+    ProductionContentComponent
 ],
   imports: [
     CommonModule,

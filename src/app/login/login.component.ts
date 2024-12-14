@@ -55,10 +55,10 @@ export class LoginComponent {
       this.securityObject?.init();
 
       //uncomment this code to use the real flow of logging in
-      // this.sendUserDataStream();  
+      this.sendUserDataStream();  
       
       //mock funciton for logging in
-         this.mockLogin();
+        //  this.mockLogin();
 
     }
   }
