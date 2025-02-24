@@ -6,10 +6,10 @@ import { CommonModule } from "@angular/common";
 import { MessagingModule } from "../shared/messaging/messaging.module";
 import { RouterModule, Routes } from "@angular/router";
 import { MainContentComponent } from './main-content/main-content.component';
-import { InstallationContentComponent } from './installation-content/installation-content.component';
-import { AgGridModule } from "ag-grid-angular";
+import { InstallationContentComponent } from './main-content/installation-content/installation-content.component';
 import { LoaderModule } from "../shared/loader/loader.module";
-import { ProductionContentComponent } from './production-content/production-content.component';
+import { ProductionContentComponent } from './main-content/production-content/production-content.component';
+import { ImportsPrimeNgModule } from "../shared/imports/primeng.module";
 
 const routes: Routes = [
     {
@@ -39,8 +39,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     MessagingModule,
-    AgGridModule,
     LoaderModule,
+    ImportsPrimeNgModule,
     RouterModule.forChild(routes)
   ],
   exports: []
