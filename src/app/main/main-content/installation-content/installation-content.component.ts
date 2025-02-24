@@ -40,7 +40,7 @@ export class InstallationContentComponent implements OnInit {
         this.cdr.detectChanges();      
 
         if (isPlatformBrowser(this.platformId)) {
-          this.tableHeight = (this.windowHeight - 150) + 'px'; // ✅ Safe to access window
+          this.tableHeight = (this.windowHeight - 170) + 'px'; // ✅ Safe to access window
         }        
       }
     )

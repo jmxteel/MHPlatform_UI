@@ -24,7 +24,7 @@
             [paginator]="true" 
             [rows]="50" 
             [lazy]="true"
-            
+            (onLazyLoad)="testing()" 
             [totalRecords]="totalRecords" 
             [scrollable]="true" 
             [scrollHeight]="tableHeight"
