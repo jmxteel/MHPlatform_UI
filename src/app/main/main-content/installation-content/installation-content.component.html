@@ -24,7 +24,7 @@
             [paginator]="true" 
             [rows]="50" 
             [lazy]="true"
-            (onLazyLoad)="testing()" 
+            (onLazyLoad)="loadProducts($event)" 
             [totalRecords]="totalRecords" 
             [scrollable]="true" 
             [scrollHeight]="tableHeight"
