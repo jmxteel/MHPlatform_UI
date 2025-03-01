@@ -10,6 +10,7 @@ import { InstallationContentComponent } from './main-content/installation-conten
 import { LoaderModule } from "../shared/loader/loader.module";
 import { ProductionContentComponent } from './main-content/production-content/production-content.component';
 import { ImportsPrimeNgModule } from "../shared/imports/primeng.module";
+import { FileFlowService } from "./main-content/installation-content/data/installation-content.data.service";
 
 const routes: Routes = [
     {
@@ -43,7 +44,8 @@ const routes: Routes = [
     ImportsPrimeNgModule,
     RouterModule.forChild(routes)
   ],
-  exports: []
+  exports: [],
+  providers: [FileFlowService],
 })
 
 export class MainModule {}
