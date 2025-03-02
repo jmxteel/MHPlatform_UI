@@ -1,9 +1,9 @@
 import { HttpClient } from "@angular/common/http";
-import { catchError, Observable, tap } from "rxjs";
-import { ConfigurationService } from "../../../../shared/configuration/configuration.service";
-import { SecurityService } from "../../../../shared/security/security.service";
-import { MessageService } from "../../../../shared/messaging/message.service";
 import { Injectable } from "@angular/core";
+import { ConfigurationService } from "../../../../shared/configuration/configuration.service";
+import { MessageService } from "../../../../shared/messaging/message.service";
+import { SecurityService } from "../../../../shared/security/security.service";
+import { catchError, Observable, tap } from "rxjs";
 
 const API_ENDPOINT_All_CLIENTS = "fileflow";
 
@@ -11,7 +11,7 @@ const API_ENDPOINT_All_CLIENTS = "fileflow";
     providedIn: 'root'
   })
 
-export class FileFlowService {
+export class ProductionContentDataService {
     apiUrl2: string = "";
 
     constructor(private http: HttpClient,

@@ -1,4 +1,4 @@
-import { NgModule } from "@angular/core";
+import { ChangeDetectorRef, NgModule } from "@angular/core";
 import { NavbarComponent } from "./shared/navbar/navbar.component";
 import { SidenavComponent } from "./shared/sidenav/sidenav.component";
 import { MainComponent } from "./main.component";
@@ -11,6 +11,7 @@ import { LoaderModule } from "../shared/loader/loader.module";
 import { ProductionContentComponent } from './main-content/production-content/production-content.component';
 import { ImportsPrimeNgModule } from "../shared/imports/primeng.module";
 import { FileFlowService } from "./main-content/installation-content/data/installation-content.data.service";
+import { ProductionContentDataService } from "./main-content/production-content/data/production-content.data.service";
 
 const routes: Routes = [
     {
@@ -45,7 +46,9 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   exports: [],
-  providers: [FileFlowService],
+  providers: [FileFlowService, 
+              ProductionContentDataService
+            ],
 })
 
 export class MainModule {}

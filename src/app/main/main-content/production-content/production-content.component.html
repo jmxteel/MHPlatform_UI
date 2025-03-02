@@ -1,35 +1,4 @@
-<!-- <p>production-content works!</p>
-<div style="margin-bottom: 50px; width: 100%; height: 650px;" class="ag-theme-balham">
-    <ag-grid-angular
-      style="width: 100%; height: 100%;"
-      [gridOptions]="gridOptions"
-      [rowData]="rowData"
-      [defaultColDef]="defaultColDef"
-      [columnDefs]="columnDefs"
-      ([paginationPageSize])="paginationPageSize"
-      [suppressColumnMoveAnimation]="true"
-      [suppressDragLeaveHidesColumns]="true"
-      [debounceVerticalScrollbar]="true"
-      [rowSelection]="'multiple'"
-      [animateRows]="false"
-      [enableCellTextSelection]="true"
-      [suppressScrollOnNewData]="true"
-      (gridReady)="onGridReady($event)"
-    >
-    </ag-grid-angular>
-  </div>
-  <br />
-  <br />
-  
-  <strong
-    ><div style="margin-bottom:100px">Call counter: {{ counter }}</div></strong
-  >
-  
-  <div>Call params: {{ callParams | json }}</div> -->
-
-
-
-  <section class="content">
+<section class="content">
     <div class="container-fluid">
 
         <div class="content-header">
@@ -47,10 +16,90 @@
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
-
         <div>
-            Production
             <!-- <app-loader></app-loader> -->
+       
+            <p-table 
+            [value]="fileFlows" 
+            dataKey="id" 
+            [paginator]="true" 
+            [rows]="50" 
+            [lazy]="true"
+            (onLazyLoad)="loadFileFlow($event)" 
+            [totalRecords]="totalRecords" 
+            [scrollable]="true" 
+            [scrollHeight]="tableHeight"
+            styleClass="p-datatable-gridlines p-datatable-sm" [rowHover]="true">
+            <ng-template pTemplate="header">
+              <tr>
+                <th style="width: 2rem"></th>
+                <th>OrderId</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Showroom</th>
+                <th>Desing Consultant</th>
+                <th>Folder no</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-fileFlow let-expanded="expanded">
+              <tr *ngIf="!loading; else skeletonLoader">
+                <td [pRowToggler]="fileFlow" style="cursor: pointer;">
+                    <i  [class]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+                </td>
+                <td>{{ fileFlow.orderID }}</td>
+                <td>{{ fileFlow.cName }}</td>
+                <td>{{ fileFlow.cSurname }}</td>
+                <td>{{ fileFlow.shwrm }}</td>
+                <td>{{ fileFlow.designConsultant }}</td>
+                <td>{{ fileFlow.fileFlowNo }} <b *ngIf="fileFlow.fpaging">[{{fileFlow.fpaging}}]</b></td>
+              </tr>
+            </ng-template>            
+
+            <ng-template pTemplate="rowexpansion" let-fileFlow>
+              <tr>
+                <td colspan="7">
+                  <div class="p-3">
+                    <p-table [value]="fileFlow.areas" dataKey="id">
+                      <ng-template pTemplate="header">
+                        <tr>
+                          <th pSortableColumn="transactionID">TransId <p-sortIcon field="transactionID" /></th>
+                          <th pSortableColumn="pArea">Project Area <p-sortIcon field="pArea" /></th>
+                          <th pSortableColumn="mat">Mat <p-sortIcon field="mat" /></th>
+                          <th pSortableColumn="numMod">Mod <p-sortIcon field="numMod" /></th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-area>
+                        <tr>
+                          <td>{{ area.transactionID }}</td>
+                          <td>{{ area.pArea }}</td>
+                          <td>{{ area.mat }}</td>
+                          <td>{{ area.numMod }}</td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="emptymessage">
+                        <tr>
+                          <td colspan="6">There are no records at the moment.</td>
+                        </tr>
+                      </ng-template>
+                    </p-table>
+                  </div>
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+          
+          <!-- Custom Skeleton Loader -->
+          <ng-template #skeletonLoader>
+            <tr>
+                <td><p-skeleton></p-skeleton></td>
+                <td><p-skeleton></p-skeleton></td>
+                <td><p-skeleton></p-skeleton></td>
+                <td><p-skeleton></p-skeleton></td>
+                <td><p-skeleton></p-skeleton></td>
+                <td><p-skeleton></p-skeleton></td>
+                <td><p-skeleton></p-skeleton></td>
+            </tr>            
+          </ng-template>            
         </div>
 
     </div>
