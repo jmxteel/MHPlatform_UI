@@ -12,6 +12,13 @@ import { ProductionContentComponent } from './main-content/production-content/pr
 import { ImportsPrimeNgModule } from "../shared/imports/primeng.module";
 import { FileFlowService } from "./main-content/installation-content/data/installation-content.data.service";
 import { ProductionContentDataService } from "./main-content/production-content/data/production-content.data.service";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { FileUploadComponent } from './shared/fileupload/file-upload.component';
+import { MessageService } from "primeng/api";
+import { FileUploadDataService } from "./shared/fileupload/file-upload.data.service";
+
+
+
 
 const routes: Routes = [
     {
@@ -36,7 +43,8 @@ const routes: Routes = [
     SidenavComponent,
     MainContentComponent,
     InstallationContentComponent,
-    ProductionContentComponent
+    ProductionContentComponent,
+    FileUploadComponent
 ],
   imports: [
     CommonModule,
@@ -47,7 +55,10 @@ const routes: Routes = [
   ],
   exports: [],
   providers: [FileFlowService, 
-              ProductionContentDataService
+              ProductionContentDataService,
+              MessageService,
+              FileUploadDataService,
+              provideAnimationsAsync(),
             ],
 })
 

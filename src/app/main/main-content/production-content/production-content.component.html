@@ -1,107 +1,130 @@
 <section class="content">
-    <div class="container-fluid">
+  <div class="container-fluid">
 
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Production</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#" routerLink="main">Home</a></li>
-                            <li class="breadcrumb-item active">production</li>
-                        </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <div>
-            <!-- <app-loader></app-loader> -->
-       
-            <p-table 
-            [value]="fileFlows" 
-            dataKey="id" 
-            [paginator]="true" 
-            [rows]="50" 
-            [lazy]="true"
-            (onLazyLoad)="loadFileFlow($event)" 
-            [totalRecords]="totalRecords" 
-            [scrollable]="true" 
-            [scrollHeight]="tableHeight"
-            styleClass="p-datatable-gridlines p-datatable-sm" [rowHover]="true">
-            <ng-template pTemplate="header">
-              <tr>
-                <th style="width: 2rem"></th>
-                <th>OrderId</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Showroom</th>
-                <th>Desing Consultant</th>
-                <th>Folder no</th>
-              </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-fileFlow let-expanded="expanded">
-              <tr *ngIf="!loading; else skeletonLoader">
-                <td [pRowToggler]="fileFlow" style="cursor: pointer;">
-                    <i  [class]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
-                </td>
-                <td>{{ fileFlow.orderID }}</td>
-                <td>{{ fileFlow.cName }}</td>
-                <td>{{ fileFlow.cSurname }}</td>
-                <td>{{ fileFlow.shwrm }}</td>
-                <td>{{ fileFlow.designConsultant }}</td>
-                <td>{{ fileFlow.fileFlowNo }} <b *ngIf="fileFlow.fpaging">[{{fileFlow.fpaging}}]</b></td>
-              </tr>
-            </ng-template>            
-
-            <ng-template pTemplate="rowexpansion" let-fileFlow>
-              <tr>
-                <td colspan="7">
-                  <div class="p-3">
-                    <p-table [value]="fileFlow.areas" dataKey="id">
-                      <ng-template pTemplate="header">
-                        <tr>
-                          <th pSortableColumn="transactionID">TransId <p-sortIcon field="transactionID" /></th>
-                          <th pSortableColumn="pArea">Project Area <p-sortIcon field="pArea" /></th>
-                          <th pSortableColumn="mat">Mat <p-sortIcon field="mat" /></th>
-                          <th pSortableColumn="numMod">Mod <p-sortIcon field="numMod" /></th>
-                        </tr>
-                      </ng-template>
-                      <ng-template pTemplate="body" let-area>
-                        <tr>
-                          <td>{{ area.transactionID }}</td>
-                          <td>{{ area.pArea }}</td>
-                          <td>{{ area.mat }}</td>
-                          <td>{{ area.numMod }}</td>
-                        </tr>
-                      </ng-template>
-                      <ng-template pTemplate="emptymessage">
-                        <tr>
-                          <td colspan="6">There are no records at the moment.</td>
-                        </tr>
-                      </ng-template>
-                    </p-table>
-                  </div>
-                </td>
-              </tr>
-            </ng-template>
-          </p-table>
-          
-          <!-- Custom Skeleton Loader -->
-          <ng-template #skeletonLoader>
-            <tr>
-                <td><p-skeleton></p-skeleton></td>
-                <td><p-skeleton></p-skeleton></td>
-                <td><p-skeleton></p-skeleton></td>
-                <td><p-skeleton></p-skeleton></td>
-                <td><p-skeleton></p-skeleton></td>
-                <td><p-skeleton></p-skeleton></td>
-                <td><p-skeleton></p-skeleton></td>
-            </tr>            
-          </ng-template>            
-        </div>
-
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Production</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#" routerLink="main">Home</a></li>
+              <li class="breadcrumb-item active">production</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
     </div>
+    <div>
+      <!-- <app-loader></app-loader> -->
 
+      <p-table [value]="fileFlows" dataKey="id" [paginator]="true" [rows]="50" [lazy]="true"
+        (onLazyLoad)="loadFileFlow($event)" [totalRecords]="totalRecords" [scrollable]="true"
+        [scrollHeight]="tableHeight" styleClass="p-datatable-gridlines p-datatable-sm" [rowHover]="true">
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 2rem"></th>
+            <th>OrderId</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Showroom</th>
+            <th>Desing Consultant</th>
+            <th>Folder no</th>
+            <th>SIR</th>
+            <th style="width: 2rem"></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-fileFlow let-expanded="expanded">
+          <tr *ngIf="!loading; else skeletonLoader">
+            <td [pRowToggler]="fileFlow" style="cursor: pointer;">
+              <i [class]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+            </td>
+            <td>{{ fileFlow.orderID }}</td>
+            <td>{{ fileFlow.cName }}</td>
+            <td>{{ fileFlow.cSurname }}</td>
+            <td>{{ fileFlow.shwrm }}</td>
+            <td>{{ fileFlow.designConsultant }}</td>
+            <td>{{ fileFlow.fileFlowNo }} <b *ngIf="fileFlow.fpaging">[{{fileFlow.fpaging}}]</b></td>
+            <td></td>
+            <td style="cursor: pointer;" (click)="showCustomModal()">
+              <i class="pi pi-cog"></i>
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="rowexpansion" let-fileFlow>
+          <tr>
+            <td colspan="9">
+              <div class="p-3">
+                <p-table [value]="fileFlow.areas" dataKey="id">
+                  <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="transactionID">TransId <p-sortIcon field="transactionID" /></th>
+            <th pSortableColumn="pArea">Project Area <p-sortIcon field="pArea" /></th>
+            <th pSortableColumn="mat">Mat <p-sortIcon field="mat" /></th>
+            <th pSortableColumn="numMod">Mod <p-sortIcon field="numMod" /></th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-area>
+          <tr>
+            <td>{{ area.transactionID }}</td>
+            <td>{{ area.pArea }}</td>
+            <td>{{ area.mat }}</td>
+            <td>{{ area.numMod }}</td>
+            <td></td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="6">There are no records at the moment.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    </td>
+    </tr>
+    </ng-template>
+    </p-table>
+
+    <!-- Custom Skeleton Loader -->
+    <ng-template #skeletonLoader>
+      <tr>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+        <td><p-skeleton></p-skeleton></td>
+      </tr>
+    </ng-template>
+  </div>
+
+  </div>
 </section>
+
+<ng-template #bootstrapModal let-title="title" let-message="message">
+  <p-button class="d-flex justify-content-end" icon="pi pi-times" [rounded]="true" [text]="true" (click)="close()" size="small"/>
+  <div class="modal-body">
+      <p-tabView>
+        <p-tabPanel header="Details"> Client Details </p-tabPanel>
+        <p-tabPanel header="Update">
+            <ng-template pTemplate="content"> 
+              Update/Move this folder for installation
+            </ng-template>
+        </p-tabPanel>
+        <p-tabPanel header="Upload SIR">
+            <ng-template pTemplate="content">
+              <app-file-upload></app-file-upload>
+            </ng-template>
+        </p-tabPanel>
+        <p-tabPanel header="Gallery">
+          <ng-template pTemplate="content"> Gallery </ng-template>
+      </p-tabPanel>        
+    </p-tabView>
+  </div>
+</ng-template>

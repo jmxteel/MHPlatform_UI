@@ -125,6 +125,9 @@ export class SecurityService {
         case 404:
           this.msgService.addExceptionMessage(msg);
           break;
+          case 405:
+            this.msgService.addExceptionMessage(msg + error.message);
+            break;          
         case 500:
           this.msgService.addExceptionMessage(error.error);
           break;

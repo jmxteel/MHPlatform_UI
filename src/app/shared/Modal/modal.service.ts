@@ -36,7 +36,7 @@ export class ModalService {
           decline: () => {
             this.modalRef?.hide();
             resolve(false);
-          }
+          },
         }
       };
       
@@ -62,8 +62,10 @@ export class ModalService {
   }
 
   showCustomModal(template: TemplateRef<any>, title: string, message: string): Promise<void> {
+    
     return new Promise((resolve) => {
         const config = {
+          class: 'modal-xl',
           initialState: {
             title,
             message,
@@ -73,7 +75,7 @@ export class ModalService {
             }
           }
         };
-  
+
         this.modalRef = this.bsModalService.show(template, config);
       });
   }

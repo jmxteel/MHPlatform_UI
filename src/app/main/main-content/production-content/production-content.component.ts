@@ -1,10 +1,12 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit, PLATFORM_ID, TemplateRef, ViewChild, viewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TableLazyLoadEvent } from 'primeng/table';
 import { Pagination } from '../Model/pagination.model';
 import { FileFlow } from './model/file-flow.model';
 import { isPlatformBrowser } from '@angular/common';
 import { ProductionContentDataService } from './data/production-content.data.service';
+import { ModalService } from '../../../shared/Modal/modal.service';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-production-content',
@@ -12,7 +14,13 @@ import { ProductionContentDataService } from './data/production-content.data.ser
   styleUrl: './production-content.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
+
+
 export class ProductionContentComponent implements OnInit {
+  @ViewChild('bootstrapModal') bootstrapModal!: TemplateRef<any>;
+  modalRef!: BsModalRef;
+
   fileFlows: FileFlow[] = [];
   totalRecords: number = 0;
   loading: boolean = true;
@@ -20,10 +28,12 @@ export class ProductionContentComponent implements OnInit {
   windowHeight: number = 0;
   pagination!: Pagination;
   filters = {filter: '',q: '', pageNumber: 1, pageSize: 20};
+  visible: boolean = false;
 
   constructor(
     private service: ProductionContentDataService,     
-    private cdr: ChangeDetectorRef, 
+    private cdr: ChangeDetectorRef,
+    public readonly modalService: ModalService,
     @Inject(PLATFORM_ID) private platformId: any
   ) { }
 
@@ -53,5 +63,13 @@ export class ProductionContentComponent implements OnInit {
         }        
       }
     )
+  }
+
+  showCustomModal(): void {
+    this.modalService.showCustomModal(this.bootstrapModal, 'asdfs','fwef');
+  }
+
+  close(): void {
+    this.modalService.hide();
   }
 }

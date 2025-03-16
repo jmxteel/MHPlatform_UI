@@ -1,0 +1,25 @@
+<div class="card flex justify-content-center">
+    <p-toast />
+    <p-fileUpload #form
+        name="files['sampleimage.jpg']"
+        customUpload="true"
+        (onSelect)="onSelect($event)"
+        (uploadHandler)="onUpload($event, form)"
+        [multiple]="true" accept=".txt, .doc, .docx, .xls, .pdf, .img, .png, .jpeg, .jpg" maxFileSize="1000000">      
+        <ng-template pTemplate="content">
+            <ul *ngIf="uploadedFiles.length">
+                <li *ngFor="let item of uploadedFiles">
+                    {{ item.file.name }} - {{ item.file.size }} bytes - 
+                    <strong [ngClass]="{'text-success': item.status === 'Successful', 'text-danger': item.status === 'Failed', 'text-warning': item.status === 'Uploading...'}">
+                        {{ item.status }}
+                    </strong>
+                </li>                
+            </ul>
+        </ng-template>
+        <ng-template pTemplate="empty">
+            <div class="flex align-items-center justify-content-center flex-column">
+                <p class="mt-4 mb-0">Drag and drop files here to upload.</p>
+            </div>
+        </ng-template>        
+    </p-fileUpload>
+</div>

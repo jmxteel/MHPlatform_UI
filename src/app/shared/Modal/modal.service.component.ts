@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { ModalService } from './modal.service';
 
 @Component({
   selector: 'app-confirm-modal',
@@ -20,11 +21,10 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
   `
 })
 export class ModalServiceComponent {
+  constructor(public bsModalRef: BsModalRef, private readonly modalService: ModalService) {}
   title?: string;
   message?: string;
   confirm: () => void = () => {};
   decline: () => void = () => {};
-  close: () => void = () => {};
-
-  constructor(public bsModalRef: BsModalRef) {}
+  close: () => void = () => { this.modalService.hide(); };
 }
